@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'jhi-user-login',
-  templateUrl: './user-login.component.html',
+  selector: 'jhi-user',
+  templateUrl: './user.component.html',
 })
 
-export class UserLoginComponent implements OnInit {
+export class UserComponent implements OnInit {
 
   users: any = [];
   constructor() { }

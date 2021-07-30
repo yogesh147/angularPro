@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { userRoutes } from './user-login-routing.module';
-import { UserLoginComponent } from './user-login.component';
+import { userRoutes } from './user-routing.module';
+import { UserComponent } from './user.component';
 import { RouterModule } from '@angular/router';
 import { AngularProModule } from '../angularPro.module';
 
@@ -10,10 +10,10 @@ import { AngularProModule } from '../angularPro.module';
     RouterModule.forChild(userRoutes),
   ],
   declarations: [
-    UserLoginComponent,
+    UserComponent,
   ],
   providers: [],
-  bootstrap: [UserLoginComponent],
+  bootstrap: [UserComponent],
 })
 
-export class UserLoginModule { }
+export class UserModule { }
