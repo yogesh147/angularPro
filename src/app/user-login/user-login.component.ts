@@ -11,7 +11,7 @@ export class UserLoginComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.users = [{ name: 'a', class: "A", city: 'x' },
+    this.users = [{  name: 'a', class: "A", city: 'x' },
     { name: 'b', class: "B", city: 'y' },
     { name: 'c', class: "C", city: 'z' }]
   }

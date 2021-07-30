@@ -1,4 +1,6 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { UserDomain } from './userDomain';
 
 @Component({
   selector: 'jhi-user-new',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 
 export class UserNewComponent implements OnInit {
 
-  users: any = [];
-  constructor() { }
+  user: UserDomain = new UserDomain;
+  constructor(public location: Location) { }
 
-  ngOnInit() {}
-  
+  ngOnInit() { }
+
+  goToPrevPage() {
+    this.location.back();
+  }
+
 }

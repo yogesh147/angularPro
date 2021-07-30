@@ -4,17 +4,22 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { UserLoginRoutingModule } from './user-login/user-login-routing.module';
 import { CommonModule } from '@angular/common';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgJhipsterModule } from 'ng-jhipster';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     CommonModule,
+    NgbModule,
+    NgJhipsterModule,
     AppRoutingModule,
-    UserLoginRoutingModule
   ],
+  exports:[ CommonModule,
+    FormsModule,
+    NgJhipsterModule],
   declarations: [
     AppComponent,
   ],
