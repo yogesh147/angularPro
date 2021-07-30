@@ -1,0 +1,30 @@
+<div class="margin-fit pageDiv">
+
+  <div class="headerDiv divPad">
+    <div>Users</div>
+    <div class="spacer"></div>
+    <div>
+    <i class="fa fa-plus-circle text-success fz-22" title="Add User" routerLink="./new"></i>
+    </div>
+  </div>
+
+  <div class="mr-0 col-12 col-lg-12 col-md-12 col-sm-12 p-20">
+    <table>
+      <thead>
+        <tr>
+          <th>User name </th>
+          <th>Class</th>
+          <th>City</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor = "let u of users">
+          <td>{{u.name}}</td>
+          <td>{{u.class}}</td>
+          <td>{{u.city}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
