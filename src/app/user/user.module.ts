@@ -3,6 +3,7 @@ import { userRoutes } from './user-routing.module';
 import { UserComponent } from './user.component';
 import { RouterModule } from '@angular/router';
 import { AngularProModule } from '../angularPro.module';
+import { UserNewComponent } from './user-new.component';
 
 @NgModule({
   imports: [
@@ -11,9 +12,9 @@ import { AngularProModule } from '../angularPro.module';
   ],
   declarations: [
     UserComponent,
+    UserNewComponent
   ],
   providers: [],
-  bootstrap: [UserComponent],
 })
 
 export class UserModule { }
