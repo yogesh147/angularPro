@@ -9,13 +9,18 @@ import { UserDomain } from './userDomain';
 
 export class UserNewComponent implements OnInit {
 
-  user: any;
+  user: any = new UserDomain;
   constructor(public location: Location) { }
 
   ngOnInit() { }
 
   goToPrevPage() {
     this.location.back();
+  }
+
+  save(){
+    console.log('on Saving: ', this.user);
+    
   }
 
 }

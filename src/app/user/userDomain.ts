@@ -7,7 +7,7 @@ export class UserDomain {
   grade?: string;
   salary?: number;
   age?: number;
-  address?: Address;
+  address?: Address = new Address;
   phoneNos?: string[];
 }
 
