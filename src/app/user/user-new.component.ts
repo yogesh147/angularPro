@@ -9,7 +9,7 @@ import { UserDomain } from './userDomain';
 
 export class UserNewComponent implements OnInit {
 
-  user: UserDomain = new UserDomain;
+  user: any;
   constructor(public location: Location) { }
 
   ngOnInit() { }

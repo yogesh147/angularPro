@@ -1,38 +1,61 @@
 <div class="headerDiv divPad">
-  <div> Create User</div>
+  <div class="pageName"> Create User</div>
   <div class="spacer"></div>
-  <div>
-    <i class="fa fa-user-circle text-success fz-22" title="View Users" (click)="goToPrevPage()"></i>
-  </div>
+    <button type="button" title="Save User" class="btn btn-success mr-2 form-btn">Save</button>
+    <button type="button" title="Cancel" class="btn btn-primary cancel form-btn" (click)="goToPrevPage()">Cancel</button>
 </div>
 
-<div class="container">
+<div class="contentDiv">
   <form #userForm="ngForm">
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" required [(ngModel)]="user.name" name="name"
-        #name="ngModel">
-    </div>
+    
+    <div class="row col-12 col-sm-12 col-md-12 col-lg-12 form-pad">
+      <div class="form-group col-sm-12 col-md-12 col-lg-3">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" required [(ngModel)]="user.name" name="name" #name="ngModel">
+      </div>
 
-    <div class="form-group">
-      <label for="rollNo">Roll No</label>
-      <input type="text" class="form-control" id="rollNo" required [(ngModel)]="user.rollNo" name="rollNo"
-        #rollNo="ngModel">
-    </div>
+      <div class="form-group col-sm-12 col-md-12 col-lg-3">
+        <label for="rollNo">Roll No</label>
+        <input type="text" class="form-control" id="rollNo" [(ngModel)]="user.rollNo" name="rollNo"
+          #rollNo="ngModel">
+      </div>
 
-    <div class="form-group">
-      <label for="grade">Grade</label>
-      <input type="text" class="form-control" id="grade" required [(ngModel)]="user.grade" name="grade"
-        #grade="ngModel">
-    </div>
+      <div class="form-group col-sm-12 col-md-12 col-lg-3">
+        <label for="grade">Grade</label>
+        <input type="text" class="form-control" id="grade" [(ngModel)]="user.grade" name="grade"
+          #grade="ngModel">
+      </div>
 
-    <div class="form-group">
-      <label for="salary">Salary</label>
-      <input type="text" class="form-control" id="salary" required [(ngModel)]="user.salary" name="salary"
-        #salary="ngModel">
-    </div>
+      <div class="form-group col-sm-12 col-md-12 col-lg-3">
+        <label for="salary">Salary</label>
+        <input type="text" class="form-control" id="salary" [(ngModel)]="user.salary" name="salary"
+          #salary="ngModel">
+      </div>
 
-    <button type="submit" class="btn btn-success mt-3">Submit</button>
+      <div class="form-group col-sm-12 col-md-12 col-lg-3">
+        <label for="age">Age</label>
+        <input type="number" class="form-control" id="age" [(ngModel)]="user.age" name="age" #age="ngModel">
+      </div>
+
+      <div class="form-group col-sm-12 col-md-12 col-lg-3">
+        <label for="street">Street</label>
+        <input type="text" class="form-control" id="street" [(ngModel)]="user.address.street" name="street"
+          #street="ngModel">
+      </div>
+
+      <div class="form-group col-sm-12 col-md-12 col-lg-3">
+        <label for="houseNo">House No</label>
+        <input type="text" class="form-control" id="houseNo" [(ngModel)]="user.address.houseNo" name="houseNo"
+          #houseNo="ngModel">
+      </div>
+
+      <div class="form-group col-sm-12 col-md-12 col-lg-3">
+        <label for="city">City</label>
+        <input type="text" class="form-control" id="city" [(ngModel)]="user.address.city" name="city"
+          #city="ngModel">
+      </div>
+
+    </div>
+    
   </form>
-
 </div>
