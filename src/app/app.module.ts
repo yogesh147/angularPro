@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AngularProModule } from './angularPro.module';
+import { HeaderComponent } from './utility/header.component';
+import { FooterComponent } from './utility/footer.component';
 
 @NgModule({
   imports: [
@@ -12,6 +14,8 @@ import { AngularProModule } from './angularPro.module';
   ],
   declarations: [
     AppComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   bootstrap: [AppComponent]
 })
