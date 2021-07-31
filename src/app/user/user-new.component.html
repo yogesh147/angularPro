@@ -9,16 +9,27 @@
 <div class="container">
   <form #userForm="ngForm">
     <div class="form-group">
-      <label for="name">First Name</label>
-      <input type="text" class="form-control" id="name" required [(ngModel)]="user.firstName" name="name"
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" required [(ngModel)]="user.name" name="name"
         #name="ngModel">
     </div>
 
     <div class="form-group">
-      <label for="name">Last Name</label>
-      <input type="text" class="form-control" id="name" required [(ngModel)]="user.lastName" name="name"
-        #name="ngModel">
-      
+      <label for="rollNo">Roll No</label>
+      <input type="text" class="form-control" id="rollNo" required [(ngModel)]="user.rollNo" name="rollNo"
+        #rollNo="ngModel">
+    </div>
+
+    <div class="form-group">
+      <label for="grade">Grade</label>
+      <input type="text" class="form-control" id="grade" required [(ngModel)]="user.grade" name="grade"
+        #grade="ngModel">
+    </div>
+
+    <div class="form-group">
+      <label for="salary">Salary</label>
+      <input type="text" class="form-control" id="salary" required [(ngModel)]="user.salary" name="salary"
+        #salary="ngModel">
     </div>
 
     <button type="submit" class="btn btn-success mt-3">Submit</button>
