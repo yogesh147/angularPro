@@ -1,5 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { UserService } from './user.service';
 import { UserDomain } from './userDomain';
 
 @Component({
@@ -10,17 +12,35 @@ import { UserDomain } from './userDomain';
 export class UserNewComponent implements OnInit {
 
   user: any = new UserDomain;
-  constructor(public location: Location) { }
+  userId: any;
+  constructor(public location: Location,
+    public userService: UserService,
+    public route: ActivatedRoute) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.route.params.subscribe((params) => {
+      this.userId = params['id'];
+    });
+    if (this.userId != null) this.getUser();
+  }
 
   goToPrevPage() {
     this.location.back();
   }
 
-  save(){
-    console.log('on Saving: ', this.user);
-    
+  save() {
+    if (this.userId) {
+      this.userService.updateUser(this.user);
+    } else {
+      this.userService.saveUser(this.user);
+    }
+  }
+
+  getUser() {
+    const data = this.userService.getUserById(this.userId);
+    if (data != null) {
+      this.user = data;
+    }
   }
 
 }

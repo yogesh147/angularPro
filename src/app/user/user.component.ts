@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'jhi-user',
@@ -8,12 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class UserComponent implements OnInit {
 
   users: any = [];
-  constructor() { }
+  constructor(public userService: UserService) { }
 
   ngOnInit() {
-    this.users = [{  name: 'a', class: "A", city: 'x' },
-    { name: 'b', class: "B", city: 'y' },
-    { name: 'c', class: "C", city: 'z' }]
+    this.users = this.userService.getAllUsers();
+  }
+
+  deleteUser(id: any) {
+    this.userService.deleteUserById(id);
   }
 
 }

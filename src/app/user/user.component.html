@@ -1,7 +1,8 @@
 <div class="headerDiv divPad">
   <div class="pageName">Users</div>
   <div class="spacer"></div>
-    <button type="button" title="Create User" class="btn btn-primary cancel form-btn" routerLink="./new">Create User</button>
+  <button type="button" title="Create User" class="btn btn-primary cancel form-btn" routerLink="./new">Create
+    User</button>
 </div>
 
 <div class="contentDiv">
@@ -10,15 +11,26 @@
       <thead>
         <tr>
           <th>User name </th>
-          <th>Class</th>
-          <th>City</th>
+          <th>Roll No</th>
+          <th>Salary</th>
+          <th>Age</th>
+          <th>Grade</th>
+          <th>Action</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody *ngIf="users?.length > 0">
         <tr *ngFor="let u of users">
-          <td>{{u.name}}</td>
-          <td>{{u.class}}</td>
-          <td>{{u.city}}</td>
+          <a [routerLink]="['/user', u.id]" ><td> {{u.name}} <td></a>
+          <td>{{u.rollNo}}</td>
+          <td>{{u.salary}}</td>
+          <td>{{u.age}}</td>
+          <td>{{u.grade}}</td>
+          <td><i class="fa fa-trash text-primary" (click)="deleteUser(u.id)" title = "Delete user"></i></td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="users.length == 0">
+        <tr>
+          <td>Data Not Available !!!</td>
         </tr>
       </tbody>
     </table>

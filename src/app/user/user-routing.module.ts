@@ -10,6 +10,11 @@ export const userRoutes: Routes = [
   {
     path: 'new',
     component: UserNewComponent,
+  },
+  {
+    path: ':id',
+    component: UserNewComponent,
   }
+
 ];
 
