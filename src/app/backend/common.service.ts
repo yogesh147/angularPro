@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -21,12 +21,18 @@ export class CommonService {
     return this.http.get('http://localhost:8080/api/getUser/').pipe(map((response: any) => { return response }));
   }
 
-  deleteUser(id: any) {
-    return this.http.post('http://localhost:8080/api/deleteUser/', { 'id': id }).pipe(map((response: any) => { return response }));
+  async deleteUser(id: any) {
+    const params : any  =  { 'id': id };
+    return await this.http.delete<any>('http://localhost:8080/api/deleteUser/', {params}).toPromise();
   }
 
-  // GetUserById(id: any) {
-  //   return this.http.get('http://localhost:8080/api/getUserById/', { 'id': id }).pipe(map((response: any) => response.json()));
-  // }
+  async GetUserById(id: any) {
+    const params : any  =  { 'id': id };
+    return await this.http.get<any>('http://localhost:8080/api/getUserById/', { params}).toPromise();
+  }
+
+  async updateUser(user: any) {
+    return await this.http.put<any>('http://localhost:8080/api/updateUser/', user).toPromise();
+  }
 
 }

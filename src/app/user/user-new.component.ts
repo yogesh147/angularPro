@@ -30,31 +30,32 @@ export class UserNewComponent implements OnInit {
     this.location.back();
   }
 
-  save() {
+  async save() {
     if (this.userId) {
       this.user.mode = 'Update';
       // this.userService.updateUser(this.user); // by local Storage
+      const promise: any = await <any>this.commonService.updateUser(this.user);
     } else {
       // this.userService.saveUser(this.user); // by local Storage
       this.user.mode = 'Save';
       this.commonService.saveUser(this.user)
-        .subscribe((data: { data: any; }) => {
+        .subscribe((data: any) => {
           alert(data.data);
           this.location.back();
           this.ngOnInit();
         }, (error: any) => console.log('On Saving ::', error));
-    }
+      }
   }
 
-  getUser() {
+  async getUser() {
     /* const data = this.userService.getUserById(this.userId);
     if (data != null) {
       this.user = data;
     } */ //  by local Storage
-    // this.commonService.GetUserById(this.userId)
-    //   .subscribe((data: { data: any; }) => { this.user = data; alert(data.data); this.ngOnInit(); },
-    //    (error: any) => console.log('On Getting By Id ::', error));
-  
+    const promise: any = await <any>this.commonService.GetUserById(this.userId);
+    if (promise.data.length > 0) {
+      this.user = promise.data[0];
+    }
   }
 
 }

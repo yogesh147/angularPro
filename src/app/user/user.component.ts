@@ -17,11 +17,10 @@ export class UserComponent implements OnInit {
     this.commonService.GetAllUsers().subscribe(data => this.users = data);
   }
 
-  deleteUser(id: any) {
+  async deleteUser(id: any) {
     // this.userService.deleteUserById(id); // by local Storage
-    this.commonService.deleteUser(id)
-      .subscribe((data: { data: any; }) => { alert(data.data); this.ngOnInit(); },
-       (error: any) => console.log('On Deleting ::', error));
+    const promise: any = await <any>this.commonService.deleteUser(id);
+    if (promise.data == 'Record has been Deleted..!!') this.ngOnInit();
   }
 
 }

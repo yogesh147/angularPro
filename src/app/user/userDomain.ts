@@ -1,5 +1,6 @@
 
 export class UserDomain {
+  _id?:Object;
   id?: string;
   userId?: string;
   name?: string;

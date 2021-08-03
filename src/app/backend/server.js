@@ -70,10 +70,10 @@ app.post("/api/SaveUser", function (req, res) {
       }
     });
   } else {
-    model.findByIdAndUpdate(req.body.id, {
-        name: req.body.name,
-        address: req.body.address
-      },
+  /*   model.findByIdAndUpdate(req.body._id, {
+      name: req.body.name,
+      address: req.body.address
+    },
       function (err, data) {
         if (err) {
           res.send(err);
@@ -82,13 +82,28 @@ app.post("/api/SaveUser", function (req, res) {
             data: "Record has been Updated..!!"
           });
         }
-      });
+      }); */
   }
 })
 
-app.post("/api/deleteUser", function (req, res) {
-  model.remove({
-    name: req.body.name
+app.put('/api/updateUser', (req, res) => {
+  model.findOneAndUpdate({
+    _id: req.body._id
+  }, { $set: req.body }, { useFindAndModify: false }, (err, user) => {
+    if (err) {
+      res.send({ error: "error" });
+
+    };
+    res.send({ success: "success" });
+  });
+
+});
+
+
+
+app.delete("/api/deleteUser", function (req, res) {
+  model.findByIdAndDelete({
+    _id: req.query.id
   }, function (err) {
     if (err) {
       res.send(err);
@@ -111,14 +126,14 @@ app.get("/api/getUser", function (req, res) {
 })
 
 app.get("/api/getUserById", function (req, res) {
-  model.findById({
-    _id: req.body.id
-  }, function (err) {
+  model.find({
+    _id: req.query.id
+  }, function (err, data) {
     if (err) {
       res.send(err);
     } else {
       res.send({
-        data: "Record has been Deleted..!!"
+        data
       });
     }
   });
