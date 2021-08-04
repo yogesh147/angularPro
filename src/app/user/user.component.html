@@ -20,12 +20,12 @@
       </thead>
       <tbody *ngIf="users?.length > 0">
         <tr *ngFor="let u of users">
-          <a [routerLink]="['/user', u._id]" ><td> {{u.name}} <td></a>
+          <a [routerLink]="['/user', u.id]" ><td> {{u.name}} <td></a>
           <td>{{u.rollNo}}</td>
           <td>{{u.salary}}</td>
           <td>{{u.age}}</td>
           <td>{{u.grade}}</td>
-          <td><i class="fa fa-trash text-primary" (click)="deleteUser(u._id)" title = "Delete user"></i></td>
+          <td><i class="fa fa-trash text-primary" (click)="deleteMongoUser(u.id)" title = "Delete user"></i></td>
         </tr>
       </tbody>
       <tbody *ngIf="users.length == 0">

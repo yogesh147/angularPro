@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonService } from '../backend/common.service';
+import { UserSpringService } from './user-spring.service';
 import { UserService } from './user.service';
 import { UserDomain } from './userDomain';
 
@@ -17,13 +18,17 @@ export class UserNewComponent implements OnInit {
   constructor(public location: Location,
     public userService: UserService,
     public route: ActivatedRoute,
-    public commonService: CommonService) { }
+    public commonService: CommonService,
+    public userSpringSvc: UserSpringService) { }
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
       this.userId = params['id'];
     });
-    if (this.userId != null) this.getUser();
+    if (this.userId != null) {
+      // this.getUser(); // by express-mongoose-nodejs server
+      this.getUserById();
+    }
   }
 
   goToPrevPage() {
@@ -44,7 +49,7 @@ export class UserNewComponent implements OnInit {
           this.location.back();
           this.ngOnInit();
         }, (error: any) => console.log('On Saving ::', error));
-      }
+    }
   }
 
   async getUser() {
@@ -57,5 +62,23 @@ export class UserNewComponent implements OnInit {
       this.user = promise.data[0];
     }
   }
+
+  // get/save from java-mongo server data
+
+  async saveUser() {
+    if (this.userId) {
+      const promise: any = await <any>this.userSpringSvc.updateUser(this.user);
+      if (promise.id !=null) this.goToPrevPage();
+    } else {
+      const promise: any = await <any>this.userSpringSvc.saveUser(this.user);
+      if (promise.id !=null) this.goToPrevPage();
+    }
+  }
+
+  async getUserById() {
+    const promise: any = await <any>this.userSpringSvc.getUserById(this.userId);
+    if (promise.length > 0) this.user = promise[0];
+  }
+
 
 }
